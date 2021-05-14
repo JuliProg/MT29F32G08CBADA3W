@@ -1,7 +1,7 @@
 using NAND_Prog;
 using System.ComponentModel.Composition;
 
-namespace ONFY_compliant_chip
+namespace MT29F32G08CBADA3W
 {
     /*
      use the design :
@@ -35,20 +35,20 @@ namespace ONFY_compliant_chip
 
         ChipAssembly()
         {
-            myChip.devManuf = "Template";
-            myChip.name = "ONFY_compliant_chip";
-            myChip.chipID = "EMPTY";                                 // device ID 
+            myChip.devManuf = "MICRON";
+            myChip.name = "MT29F32G08CBADA3W";
+            myChip.chipID = "2C-44-44-4B-A9-00-00-00";                                 // device ID 
 
             myChip.width = Organization.x8;                          // chip width (x8 or x16)
-            myChip.bytesPP = 2048;                                   // page size in bytes
-            myChip.spareBytesPP = 64;                                // size Spare Area in bytes
-            myChip.pagesPB = 64;                                     // the number of pages per block 
-            myChip.bloksPLUN = 4096;                                 // number of blocks in CE 
+            myChip.bytesPP = 8192;                                   // page size in bytes
+            myChip.spareBytesPP = 744;                                // size Spare Area in bytes
+            myChip.pagesPB = 256;                                     // the number of pages per block 
+            myChip.bloksPLUN = 2128;                                 // number of blocks in CE 
             myChip.LUNs = 1;                                         // the amount of CE in the chip
             myChip.colAdrCycles = 2;                                 // cycles for column addressing
             myChip.rowAdrCycles = 3;                                 // cycles for row addressing 
             myChip.vcc = Vcc.v3_3;                                   // supply voltage
-            (myChip as ChipPrototype_v1).EccBits = 1;                // required Ecc bits for each 512 bytes
+            (myChip as ChipPrototype_v1).EccBits = 255;                // required Ecc bits for each 512 bytes
              
         #endregion
 
@@ -90,7 +90,7 @@ namespace ONFY_compliant_chip
 
             myChip.registers.Add(                  // https://github.com/JuliProg/Wiki/wiki/ID-Register
                 "Id Register").     
-                Size(5).
+                Size(11).
                 Operations("ReadId_90h");
             
 
