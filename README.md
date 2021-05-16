@@ -10,8 +10,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
 
 <section class = "listing">
 
-# Chip parameters
-
+# Chip parameters
 ```c#
 
 
@@ -25,7 +24,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
         {
             myChip.devManuf = "MICRON";
             myChip.name = "MT29F32G08CBADA3W";
-            myChip.chipID = "2C-44-44-4B-A9-00-00-00";                                 // device ID 
+            myChip.chipID = "2C-44-44-4B-A9-00-00-00";               // device ID 
 
             myChip.width = Organization.x8;                          // chip width (x8 or x16)
             myChip.bytesPP = 8192;                                   // page size in bytes
@@ -36,11 +35,10 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
             myChip.colAdrCycles = 2;                                 // cycles for column addressing
             myChip.rowAdrCycles = 3;                                 // cycles for row addressing 
             myChip.vcc = Vcc.v3_3;                                   // supply voltage
-            (myChip as ChipPrototype_v1).EccBits = 19;                // required Ecc bits for each 512 bytes
-             
-```
-# Chip operations
+            (myChip as ChipPrototype_v1).EccBits = 19;               // Number of bits ECC correctability for each 512 bytes
 
+```
+# Chip operations
 ```c#
 
 
@@ -52,8 +50,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
                    Operations("PageProgram_80h_10h");
 
 ```
-# Initial Invalid Block (s)
-
+# Initial Invalid Block (s)
 ```c#
 
             
@@ -62,8 +59,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
             myChip.InitialInvalidBlock = "InitInvalidBlock_v1";
                 
 ```
-# Chip registers (optional)
-
+# Chip registers (optional)
 ```c#
 
 
@@ -78,7 +74,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
 
 
 
-             myChip.registers.Add(                  // https://github.com/JuliProg/Wiki/wiki/ID-Register
+            myChip.registers.Add(                  // https://github.com/JuliProg/Wiki/wiki/ID-Register
                 "Id Register").     
                 Size(8).
                 Operations("ReadId_90h");
@@ -102,6 +98,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
 
 ```
 </section>
+
 
 
 
