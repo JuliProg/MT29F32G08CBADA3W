@@ -48,9 +48,9 @@ namespace MT29F32G08CBADA3W
             myChip.colAdrCycles = 2;                                 // cycles for column addressing
             myChip.rowAdrCycles = 3;                                 // cycles for row addressing 
             myChip.vcc = Vcc.v3_3;                                   // supply voltage
-            (myChip as ChipPrototype_v1).EccBits = 255;                // required Ecc bits for each 512 bytes
-             
-        #endregion
+            (myChip as ChipPrototype_v1).EccBits = 19;               // Number of bits ECC correctability for each 512 bytes
+
+            #endregion
 
 
             #region Chip operations
@@ -90,7 +90,7 @@ namespace MT29F32G08CBADA3W
 
             myChip.registers.Add(                  // https://github.com/JuliProg/Wiki/wiki/ID-Register
                 "Id Register").     
-                Size(11).
+                Size(8).
                 Operations("ReadId_90h");
             
 
@@ -98,6 +98,17 @@ namespace MT29F32G08CBADA3W
               "Parameter Page (ONFI parameter)").
               Size(768).
               Operations("ReadParameterPage_ECh");
+
+            myChip.registers.Add(                  // https://github.com/JuliProg/Wiki/wiki/OTP
+               "OTP memory area").
+               Size((8192 + 744) * 30).           // Number of OTP pages = 30
+               Operations("OTP_Mode_On_v1").      // set chip to OTP mode then Read or Programm block[0].page[02]...block[0].page[32]
+               Operations("OTP_Mode_Off_v1");     // set chip to normall mode
+
+            myChip.registers.Add(
+               "Unique Id").
+               Size(32).
+               Operations("ReadUniqueId_EDh");
 
             #endregion
 
