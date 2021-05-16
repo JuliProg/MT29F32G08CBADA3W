@@ -18,7 +18,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
 
         //  VSP1(38pin) - NC    
         //  VSP2(35pin) - NC
-        //  VSP3(20pin) - NC
+        //  VSP3(20pin) - NC 
 
         ChipAssembly()
         {
@@ -98,6 +98,7 @@ Dependency injection, DI based on MEF framework is used to connect the chip to t
 
 ```
 </section>
+
 
 
 
